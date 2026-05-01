@@ -14,13 +14,13 @@ export class Courses {
 
   public get = (): Courseinfo[] => this.cache;
 
-  public add = (course: Courseinfo): string  => {
+  public add = (course: Courseinfo | null): string  => {
     if(course === null)
       return MESSAGE.INVALID_COURSE;
-    const dupicate: Courseinfo = 
+    const dupicate = 
       this.cache.find(cached =>
         cached.code === course.code
-      );
+      ) as Courseinfo || null;
     if(dupicate) {
       return MESSAGE.DUPLICATE;
     }
@@ -31,7 +31,7 @@ export class Courses {
       save(MEMORY.COURSES, updated);
       this.cache = updated;
       return MESSAGE.COURSE_ADDED;
-    } catch(err) {
+    } catch(err: any) {
       console.error(err.message);
       return MESSAGE.STORAGE_FAIL;
     }

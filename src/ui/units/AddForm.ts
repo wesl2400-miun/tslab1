@@ -30,7 +30,7 @@ export class AddForm {
     addBtn.addEventListener(
       'click', (event) => {
       event.preventDefault();
-      const course: Courseinfo = valCourse(
+      const course: Courseinfo | null = valCourse(
       codeInp.value, nameInp.value, 
       progInp.value, syllInp.value);
       this.addCourse(course);
@@ -38,7 +38,7 @@ export class AddForm {
   }
 
   private addCourse = (
-    course: Courseinfo): void => {
+    course: Courseinfo | null): void => {
       const mess: string = 
         this.courses.add(course);
       const color: string = 

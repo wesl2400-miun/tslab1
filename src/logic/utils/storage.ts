@@ -6,5 +6,6 @@ export const save = (key: string, obj: any): void => {
 
 export const load = (key: string): any => {
   const json = localStorage.getItem(key);
+  if(!json) return null;
   return JSON.parse(json);
 }

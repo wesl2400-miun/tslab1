@@ -10,8 +10,7 @@ export class CourseItem {
   constructor(list: HTMLElement, 
     course: Courseinfo) {
     this.course = course;
-    const { code, name, progression, 
-      syllabus } = this.course;
+    const { code, name, progression, syllabus } = this.course;
     this.item = newNode('li', list, null);
     newNode('p', this.item, code);
     newNode('p', this.item, name);

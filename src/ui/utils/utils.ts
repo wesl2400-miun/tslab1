@@ -5,9 +5,9 @@ export const node = (ref: string):
 }
 
 export const newNode = (type: string, 
-  parent: HTMLElement | null, 
+  parent: HTMLElement, 
   text: string | null):
-  HTMLElement | null => {
+  HTMLElement => {
   const elmnt = document.createElement(type);
   if(text) elmnt.textContent = text;
   parent.appendChild(elmnt);
