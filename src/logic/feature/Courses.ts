@@ -12,14 +12,11 @@ export class Courses {
       MEMORY.COURSES) || [];
   }
 
-  get = (): Courseinfo[] => this.cache;
+  public get = (): Courseinfo[] => this.cache;
 
-  add = (course: Courseinfo): string  => {
-    if(course === null) {
-      console.error(
-        MESSAGE.INVALID_COURSE);
+  public add = (course: Courseinfo): string  => {
+    if(course === null)
       return MESSAGE.INVALID_COURSE;
-    }
     const dupicate: Courseinfo = 
       this.cache.find(cached =>
         cached.code === course.code
@@ -40,20 +37,9 @@ export class Courses {
     }
   }
 
-  remove = (code: string): string => {
-    const len: number = 
-      this.cache.length;
-    let index = -1;
-    for(let i = 0; i < len; i++) {
-      if(this.cache[i].code === code) {
-        index = i;
-        break;
-      }
-    }
-    if(index === -1) 
-      return MESSAGE.REMOVAL_FAILED;
-    this.cache.splice(index, 1);
+  public remove = (code: string): void => {
+    this.cache = this.cache.filter(
+      course => course.code != code);
     save(MEMORY.COURSES, this.cache);
-    return MESSAGE.COURSE_REMOVED;
   }
 }

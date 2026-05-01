@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="sv">
   <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/svg+xml" href="./src/ui/assets/mittfavicon.svg">
     <link rel="stylesheet" href="./src/ui/css/root.css"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laboration 1  - Grunderna i Typescript</title>
+    <title>Laboration 1 | Grunderna i TypeScript</title>
   </head>
   <body>
     <nav>
@@ -13,7 +13,35 @@
     </nav>
     <main>
       <h1>Laboration 1</h1>
+      <section>
+        <h2>Lägg till kurs</h2>
+        <p><b>Tillåtna kurskoder:</b> dt207g, dt003g, dt211g, dt084g, dt200g, dt208g, dt068g</p>
+        <p><b>Tillåtna progressioner:</b> A, B, C</p>
+        <p><b>Tillåtna kursnamn:</b>  Backend-baserad webbutveckling, Frontend-baserad webbutveckling, Databaser, Webbanvändbarhet, Grafisk teknik för webb, Introduktion till programmering i JavaScript, Programmering i TypeScript</p>
+        <form>
+          <label for="course-code">Kurskod</label>
+          <input type="text" name="course-code" id="course-code" placeholder="dt207g">
 
+          <label for="course-name">Kursnamn</label>
+          <input type="text" name="course-name" id="course-name" placeholder="Backend-baserad webbutveckling">
+          
+          <label for="course-prog">Kursnamn</label>
+          <input type="text" name="course-prog" id="course-prog" placeholder="A">
+
+          <label for="course-syll">Syllabus</label>
+          <input type="text" name="course-syll" id="course-syll" placeholder="http://localhost:5173/">
+
+          <input id="add-btn" type="submit" value="Lägg till">
+          <p id="add-msg"></p>
+        </form>
+      </section>
+      <section>
+        <h2>Kursöversikt</h2>
+        <p>Här visas kurser som du har lagt till.</p>
+        <ul id="course-list">
+          <!-- Elementen i listan genereras dynamiskt -->
+        </ul>
+      </section>
     </main>
     <script type="module" src="./src/ui/views/main-view.ts"></script>
   </body>
