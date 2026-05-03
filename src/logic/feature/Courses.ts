@@ -3,7 +3,7 @@ import { load, save } from "../utils/storage.ts";
 import { MEMORY } from "../refs/memory.ts";
 import { MESSAGE } from "../refs/message.ts";
 
-
+// Ansvarar för appens huvudfunktionalitet
 export class Courses {
   private cache: Courseinfo[];
 
@@ -12,8 +12,10 @@ export class Courses {
       MEMORY.COURSES) || [];
   }
 
+  // Hämta kurslistan
   public get = (): Courseinfo[] => this.cache;
 
+  // Lägg till kursen
   public add = (course: Courseinfo | null): string  => {
     if(course === null)
       return MESSAGE.INVALID_COURSE;
@@ -37,6 +39,7 @@ export class Courses {
     }
   }
 
+  // Ta bort kursen
   public remove = (code: string): void => {
     this.cache = this.cache.filter(
       course => course.code != code);

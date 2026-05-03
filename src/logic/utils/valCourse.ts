@@ -1,6 +1,7 @@
 import type { Courseinfo } from "../interface/Courseinfo.js";
 import { Course } from "../model/Course.js";
 
+// Tillåtna kurskoder
 const codes: string[] = [
   'dt207g', 
   'dt003g',
@@ -11,6 +12,7 @@ const codes: string[] = [
   'dt068g'
 ] as const;
 
+// Tillåtna kursnamn
 const names: string[] = [
   'backend-baserad webbutveckling',
   'frontend-baserad webbutveckling',
@@ -21,12 +23,14 @@ const names: string[] = [
   'programmering i typescript'
 ] as const;
 
+// Tillåtna kursprogressioner
 const progs: string[] = [
   'a', 
   'b', 
   'c'
 ] as const;
 
+// Validera den kurs som matas in av användaren
 export const valCourse = (
   code: string,
   name: string,

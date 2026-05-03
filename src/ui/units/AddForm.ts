@@ -3,6 +3,7 @@ import type { Courseinfo } from "../../logic/interface/Courseinfo.ts";
 import { valCourse } from "../../logic/utils/valCourse.ts";
 import { CourseList } from "./CourseList.ts";
 
+// Hanterar logiken bakom formuläret
 export class AddForm {
   private courses: Courses;
   private msgNode: HTMLElement;
@@ -20,6 +21,7 @@ export class AddForm {
       this.courses);
   }
 
+  // Koppla händelselyssnaren till de angivna interaktiva element
   public wireAddBtn = (
     codeInp: HTMLInputElement,
     nameInp: HTMLInputElement,
@@ -27,6 +29,8 @@ export class AddForm {
     syllInp: HTMLInputElement,
     addBtn: HTMLInputElement,
   ): void => {
+    this.wireInps([codeInp, nameInp,
+      progInp, syllInp]);
     addBtn.addEventListener(
       'click', (event) => {
       event.preventDefault();
@@ -37,6 +41,7 @@ export class AddForm {
     });
   }
 
+  // Lägg till en kurs i kurslistan när lägg-till-knappen trycks
   private addCourse = (
     course: Courseinfo | null): void => {
       const mess: string = 
@@ -48,5 +53,15 @@ export class AddForm {
       this.msgNode.textContent = mess;
       this.courseList.update(
         this.courses);
+  }
+
+  // Nollställs meddelanden när något av inmatningsfält fokuseras
+  private wireInps = (
+    inputs: HTMLInputElement[]): void => {
+    inputs.forEach(input =>{
+      input.addEventListener('focus', () => {
+        this.msgNode.innerHTML = '';
+      })
+    });
   }
 }

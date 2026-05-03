@@ -1,4 +1,5 @@
 
+// Referenser till redan existerande HTML-element
 export const NODE_ID: Readonly<any> = {
   COURSE_CODE: 'course-code',
   COURSE_NAME: 'course-name',

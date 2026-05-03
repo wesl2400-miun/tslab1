@@ -3,8 +3,10 @@ import { NODE_ID } from "../refs/node-id.js";
 import { AddForm } from "../units/AddForm.js";
 import { node } from "../utils/utils.js";
 
-const courses = new Courses();
+// Objektet innehåller funktionaliten för kurslistan
+const courses: Courses = new Courses();
 
+// Hämta följande HTML-element
 const codeInp = node(
   NODE_ID.COURSE_CODE) as 
   HTMLInputElement || null;
@@ -27,8 +29,10 @@ const courseList = node(
   NODE_ID.COURSE_LIST) as 
   HTMLElement || null;
 
-const addForm = new AddForm(
-  courses, msgNode, courseList);
+// Sätt upp formuläret
+const addForm: AddForm = 
+  new AddForm(courses, 
+  msgNode, courseList);
 addForm.wireAddBtn(codeInp, 
   nameInp, progInp, 
   syllInp, addBtn);

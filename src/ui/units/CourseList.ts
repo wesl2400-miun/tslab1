@@ -1,6 +1,7 @@
 import type { Courses } from "../../logic/feature/Courses";
 import { CourseItem } from "./CourseItem";
 
+// Ansvarar för kurslistan
 export class CourseList {
   private list: HTMLElement;
 
@@ -8,6 +9,7 @@ export class CourseList {
     this.list = list;
   }
 
+  // Uppdatera kurslistan
   public update = (courses: Courses): void => {
     this.list.innerHTML = '';
     courses.get().forEach(course => {

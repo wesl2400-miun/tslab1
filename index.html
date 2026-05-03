@@ -8,11 +8,12 @@
     <title>Laboration 1 | Grunderna i TypeScript</title>
   </head>
   <body>
-    <nav>
+    <header class="logo">
       <img width="260" height="150" src="./src/ui/assets/mittlogo.svg" alt="Mittuniversitetet - Logotyp">
-    </nav>
+    </header>
     <main>
       <h1>Laboration 1</h1>
+      <!-- Formuläret som styrs dynamiskt från main-view.ts -->
       <section>
         <h2>Lägg till kurs</h2>
         <p><b>Tillåtna kurskoder:</b> dt207g, dt003g, dt211g, dt084g, dt200g, dt208g, dt068g</p>
@@ -25,7 +26,7 @@
           <label for="course-name">Kursnamn</label>
           <input type="text" name="course-name" id="course-name" placeholder="Backend-baserad webbutveckling">
           
-          <label for="course-prog">Kursnamn</label>
+          <label for="course-prog">Progression</label>
           <input type="text" name="course-prog" id="course-prog" placeholder="A">
 
           <label for="course-syll">Syllabus</label>
@@ -43,6 +44,7 @@
         </ul>
       </section>
     </main>
+    <!-- Kör appens huvudfunktionalitet -->
     <script type="module" src="./src/ui/views/main-view.ts"></script>
   </body>
 </html>
