@@ -1,6 +1,6 @@
 
 // Definierar strukturen för kursen
-export interface Courseinfo {
+export interface CourseInfo {
   code: string,
   name: string,
   progression: string,

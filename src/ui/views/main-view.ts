@@ -1,7 +1,7 @@
-import { Courses } from "../../logic/feature/Courses.js";
-import { NODE_ID } from "../refs/node-id.js";
-import { AddForm } from "../units/AddForm.js";
-import { node } from "../utils/utils.js";
+import { Courses } from "../../logic/feature/Courses.ts";
+import { NODE_ID } from "../refs/node-id.ts";
+import { AddForm } from "../units/AddForm.ts";
+import { node } from "../utils/utils.ts";
 
 // Objektet innehåller funktionaliten för kurslistan
 const courses: Courses = new Courses();

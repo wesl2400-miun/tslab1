@@ -1,5 +1,5 @@
-import type { Courseinfo } from "../interface/Courseinfo.js";
-import { Course } from "../model/Course.js";
+import type { CourseInfo } from "../interface/CourseInfo.ts";
+import { Course } from "../model/Course.ts";
 
 // Tillåtna kurskoder
 const codes: string[] = [
@@ -36,7 +36,7 @@ export const valCourse = (
   name: string,
   progression: string,
   syllabus: string
-): Courseinfo | null => {
+): CourseInfo | null => {
   try { 
     new URL(syllabus); 
   } catch(err) { 

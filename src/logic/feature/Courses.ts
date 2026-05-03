@@ -1,11 +1,11 @@
-import type { Courseinfo } from "../interface/Courseinfo.ts";
+import type { CourseInfo } from "../interface/CourseInfo.ts";
 import { load, save } from "../utils/storage.ts";
 import { MEMORY } from "../refs/memory.ts";
 import { MESSAGE } from "../refs/message.ts";
 
 // Ansvarar för appens huvudfunktionalitet
 export class Courses {
-  private cache: Courseinfo[];
+  private cache: CourseInfo[];
 
   constructor() {
     this.cache = load(
@@ -13,22 +13,22 @@ export class Courses {
   }
 
   // Hämta kurslistan
-  public get = (): Courseinfo[] => this.cache;
+  public get = (): CourseInfo[] => this.cache;
 
   // Lägg till kursen
-  public add = (course: Courseinfo | null): string  => {
+  public add = (course: CourseInfo | null): string  => {
     if(course === null)
       return MESSAGE.INVALID_COURSE;
     const dupicate = 
       this.cache.find(cached =>
         cached.code === course.code
-      ) as Courseinfo || null;
+      ) as CourseInfo || null;
     if(dupicate) {
       return MESSAGE.DUPLICATE;
     }
       
     try {
-      const updated: Courseinfo[] = 
+      const updated: CourseInfo[] = 
         [...this.cache, course];
       save(MEMORY.COURSES, updated);
       this.cache = updated;

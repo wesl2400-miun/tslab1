@@ -1,4 +1,4 @@
-import type { Courseinfo } from "../../logic/interface/Courseinfo.ts";
+import type { CourseInfo } from "../../logic/interface/CourseInfo.ts";
 import { newNode } from "../utils/utils.ts";
 import { Courses } from "../../logic/feature/Courses.ts";
 import type { CourseList } from "./CourseList.ts";
@@ -6,10 +6,10 @@ import type { CourseList } from "./CourseList.ts";
 // Ansvarar för kurselement i kurslistan
 export class CourseItem {
   private item: HTMLElement;
-  private course: Courseinfo;
+  private course: CourseInfo;
 
   constructor(list: HTMLElement, 
-    course: Courseinfo) {
+    course: CourseInfo) {
     this.course = course;
     const { code, name, 
       progression, syllabus } = this.course;

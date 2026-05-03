@@ -1,5 +1,5 @@
-import type { Courses } from "../../logic/feature/Courses";
-import { CourseItem } from "./CourseItem";
+import type { Courses } from "../../logic/feature/Courses.ts";
+import { CourseItem } from "./CourseItem.ts";
 
 // Ansvarar för kurslistan
 export class CourseList {

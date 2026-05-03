@@ -1,5 +1,5 @@
 import { Courses } from "../../logic/feature/Courses.ts";
-import type { Courseinfo } from "../../logic/interface/Courseinfo.ts";
+import type { CourseInfo } from "../../logic/interface/CourseInfo.ts";
 import { valCourse } from "../../logic/utils/valCourse.ts";
 import { CourseList } from "./CourseList.ts";
 
@@ -34,7 +34,7 @@ export class AddForm {
     addBtn.addEventListener(
       'click', (event) => {
       event.preventDefault();
-      const course: Courseinfo | null = valCourse(
+      const course: CourseInfo | null = valCourse(
       codeInp.value, nameInp.value, 
       progInp.value, syllInp.value);
       this.addCourse(course);
@@ -43,7 +43,7 @@ export class AddForm {
 
   // Lägg till en kurs i kurslistan när lägg-till-knappen trycks
   private addCourse = (
-    course: Courseinfo | null): void => {
+    course: CourseInfo | null): void => {
       const mess: string = 
         this.courses.add(course);
       const color: string = 

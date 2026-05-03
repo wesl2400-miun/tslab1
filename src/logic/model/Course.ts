@@ -1,7 +1,7 @@
-import type { Courseinfo } from "../interface/Courseinfo.ts";
+import type { CourseInfo } from "../interface/CourseInfo.ts";
 
 // Modellklassen för kursen, följer Courseinfo strukuren
-export class Course implements Courseinfo {
+export class Course implements CourseInfo {
   public code: string;
   public name: string;
   public progression: string;
