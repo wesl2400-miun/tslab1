@@ -8,17 +8,19 @@ export class AddForm {
   private courses: Courses;
   private msgNode: HTMLElement;
   private courseList : CourseList;
+  private listView: HTMLElement;
   
   constructor(
     courses: Courses,
     msgNode: HTMLElement,
-    list: HTMLElement) {
+    listView: HTMLElement) {
     this.courses = courses;
     this.msgNode = msgNode;
     this.courseList = 
-      new CourseList(list);
+      new CourseList(listView);
     this.courseList.update(
       this.courses);
+    this.listView = listView;
   }
 
   // Koppla händelselyssnaren till de angivna interaktiva element
@@ -38,6 +40,7 @@ export class AddForm {
       codeInp.value, nameInp.value, 
       progInp.value, syllInp.value);
       this.addCourse(course);
+      this.listView.scrollIntoView();
     });
   }
 
