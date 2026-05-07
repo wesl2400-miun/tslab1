@@ -1,4 +1,4 @@
-# Frontend-baserad webbutveckling
+# Programmering i TypeScript, DT208G
 ## Laboration 1 - Programmering i TypeScript
 
 Laborationen går ut på att skapa en applikation för hantering av kurser. 
