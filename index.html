@@ -15,10 +15,21 @@
       <h1>Laboration 1</h1>
       <!-- Formuläret som styrs dynamiskt från main-view.ts -->
       <section>
+        <h2>Gilitiga kurser</h2>
+        <ul class="info-list">
+          <li>
+            <p><b>Gilitiga kurskoder:</b> dt207g, dt003g, dt211g, dt084g, dt200g, dt208g, dt068g</p>
+          </li>
+          <li>
+            <p><b>Gilitiga progressioner:</b> A, B, C</p>
+          </li>
+          <li>
+            <p><b>Gilitiga kursnamn:</b>  Backend-baserad webbutveckling, Frontend-baserad webbutveckling, Databaser, Webbanvändbarhet, Grafisk teknik för webb, Introduktion till programmering i JavaScript, Programmering i TypeScript</p>
+          </li>
+        </ul>
+      </section>
+      <section>
         <h2>Lägg till kurs</h2>
-        <p><b>Tillåtna kurskoder:</b> dt207g, dt003g, dt211g, dt084g, dt200g, dt208g, dt068g</p>
-        <p><b>Tillåtna progressioner:</b> A, B, C</p>
-        <p><b>Tillåtna kursnamn:</b>  Backend-baserad webbutveckling, Frontend-baserad webbutveckling, Databaser, Webbanvändbarhet, Grafisk teknik för webb, Introduktion till programmering i JavaScript, Programmering i TypeScript</p>
         <form>
           <label for="course-code">Kurskod</label>
           <input type="text" name="course-code" id="course-code" placeholder="dt207g">
@@ -33,7 +44,7 @@
           <input type="text" name="course-syll" id="course-syll" placeholder="http://localhost:5173/">
 
           <input id="add-btn" type="submit" value="Lägg till">
-          <p id="add-msg"></p>
+          <ul class="errors" id="err-list"></ul>
         </form>
       </section>
       <section>

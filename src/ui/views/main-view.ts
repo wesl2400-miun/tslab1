@@ -22,17 +22,17 @@ const syllInp = node(
 const addBtn = node(
   NODE_ID.ADD_BTN) as 
   HTMLInputElement || null;
-const msgNode = node(
-  NODE_ID.ADD_MSG) as 
+const errListNode = node(
+  NODE_ID.ERR_LIST) as 
   HTMLElement || null;
-const courseList = node(
+const courListNode = node(
   NODE_ID.COURSE_LIST) as 
   HTMLElement || null;
 
 // Sätt upp formuläret
 const addForm: AddForm = 
   new AddForm(courses, 
-  msgNode, courseList);
+  courListNode, errListNode);
 addForm.wireAddBtn(codeInp, 
   nameInp, progInp, 
   syllInp, addBtn);

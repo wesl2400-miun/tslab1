@@ -1,26 +1,28 @@
 import { Courses } from "../../logic/feature/Courses.ts";
-import type { CourseInfo } from "../../logic/interface/CourseInfo.ts";
-import { valCourse } from "../../logic/utils/valCourse.ts";
-import { CourseList } from "./CourseList.ts";
+import { CourseListV } from "./CourseListV.ts";
+import { ErrListV } from "./ErrListV.ts";
 
 // Hanterar logiken bakom formuläret
 export class AddForm {
   private courses: Courses;
-  private msgNode: HTMLElement;
-  private courseList : CourseList;
-  private listView: HTMLElement;
+  private courListNode: HTMLElement;
+  private courseListV : CourseListV;
+  private errListV: ErrListV;
   
   constructor(
     courses: Courses,
-    msgNode: HTMLElement,
-    listView: HTMLElement) {
+    courListNode: HTMLElement,
+    errListNode: HTMLElement) {
     this.courses = courses;
-    this.msgNode = msgNode;
-    this.courseList = 
-      new CourseList(listView);
-    this.courseList.update(
+    this.courListNode = 
+      courListNode;
+    this.courseListV = 
+      new CourseListV(
+        courListNode);
+    this.courseListV.update(
       this.courses);
-    this.listView = listView;
+    this.errListV = new ErrListV(
+      errListNode)
   }
 
   // Koppla händelselyssnaren till de angivna interaktiva element
@@ -36,26 +38,17 @@ export class AddForm {
     addBtn.addEventListener(
       'click', (event) => {
       event.preventDefault();
-      const course: CourseInfo | null = valCourse(
-      codeInp.value, nameInp.value, 
-      progInp.value, syllInp.value);
-      this.addCourse(course);
-      this.listView.scrollIntoView();
-    });
-  }
-
-  // Lägg till en kurs i kurslistan när lägg-till-knappen trycks
-  private addCourse = (
-    course: CourseInfo | null): void => {
-      const mess: string = 
-        this.courses.add(course);
-      const color: string = 
-        mess.includes('FEL:') 
-        ? '#731010': '#13590e';
-      this.msgNode.style.color = color;
-      this.msgNode.textContent = mess;
-      this.courseList.update(
+      const errs: string [] = 
+        this.courses.add(
+          codeInp.value, 
+          nameInp.value, 
+          progInp.value, 
+          syllInp.value);
+      this.errListV.update(errs);
+      this.courseListV.update(
         this.courses);
+      this.courListNode.scrollIntoView();
+    });
   }
 
   // Nollställs meddelanden när något av inmatningsfält fokuseras
@@ -63,7 +56,7 @@ export class AddForm {
     inputs: HTMLInputElement[]): void => {
     inputs.forEach(input =>{
       input.addEventListener('focus', () => {
-        this.msgNode.innerHTML = '';
+        this.errListV.clear();
       })
     });
   }

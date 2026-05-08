@@ -1,7 +1,8 @@
 import type { CourseInfo } from "../interface/CourseInfo.ts";
 import { load, save } from "../utils/storage.ts";
 import { MEMORY } from "../refs/memory.ts";
-import { MESSAGE } from "../refs/message.ts";
+import { ERROR } from "../refs/error.ts";
+import { valCourse } from "../utils/valCourse.ts";
 
 // Ansvarar för appens huvudfunktionalitet
 export class Courses {
@@ -16,26 +17,37 @@ export class Courses {
   public get = (): CourseInfo[] => this.cache;
 
   // Lägg till kursen
-  public add = (course: CourseInfo | null): string  => {
-    if(course === null)
-      return MESSAGE.INVALID_COURSE;
+  public add = (code: string,
+    name: string,prog: string,
+    url: string): string[]  => {
+    const { course, errs } = 
+      valCourse(code, 
+        name, prog, url);
+    if(!course) return errs;
     const dupicate = 
       this.cache.find(cached =>
         cached.code === course.code
       ) as CourseInfo || null;
     if(dupicate) {
-      return MESSAGE.DUPLICATE;
-    }
-      
+      errs.push(ERROR.DUPLICATE);
+    } else {
+      this.trySave(errs, course);
+    }  
+    return errs;
+  }
+
+  // Försökt att spara kursen i localStorage
+  private trySave = (
+    errs: string[], 
+    course: CourseInfo): void => {
     try {
       const updated: CourseInfo[] = 
         [...this.cache, course];
       save(MEMORY.COURSES, updated);
       this.cache = updated;
-      return MESSAGE.COURSE_ADDED;
     } catch(err: any) {
       console.error(err.message);
-      return MESSAGE.STORAGE_FAIL;
+      errs.push(ERROR.STORAGE_FAIL);
     }
   }
 

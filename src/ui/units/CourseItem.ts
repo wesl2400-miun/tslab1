@@ -1,7 +1,7 @@
 import type { CourseInfo } from "../../logic/interface/CourseInfo.ts";
 import { newNode } from "../utils/utils.ts";
 import { Courses } from "../../logic/feature/Courses.ts";
-import type { CourseList } from "./CourseList.ts";
+import type { CourseListV } from "./CourseListV.ts";
 
 // Ansvarar för kurselement i kurslistan
 export class CourseItem {
@@ -21,18 +21,18 @@ export class CourseItem {
     newNode('p', this.item, 
       `Progression: ${progression}`);
     newNode('p', this.item, 
-      `Kurskod: ${syllabus}`);
+      `Syllabus: ${syllabus}`);
   }
 
   // Ta bort den angivna kursen från listan när ta-bort-knappen trycks
   public wireRemBtn = (courses: Courses, 
-    courseList: CourseList): void => {
+    courseListV: CourseListV): void => {
     const { code } = this.course;
     const btn = newNode('button', 
       this.item, 'Ta bort');
     btn.addEventListener('click', () => {
       courses.remove(code);
-      courseList.update(courses);
+      courseListV.update(courses);
     });
   }
 }

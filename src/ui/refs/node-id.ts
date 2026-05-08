@@ -6,6 +6,6 @@ export const NODE_ID: Readonly<any> = {
   COURSE_PROG: 'course-prog',
   COURSE_SYLL: 'course-syll',
   ADD_BTN: 'add-btn',
-  ADD_MSG: 'add-msg',
+  ERR_LIST: 'err-list',
   COURSE_LIST: 'course-list'
 };
